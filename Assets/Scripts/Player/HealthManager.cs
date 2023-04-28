@@ -14,11 +14,14 @@ public class HealthManager : MonoBehaviour
     void Awake(){
         health = 3;
     }
+
+
     // Update is called once per frame
     void Update()
     {
         foreach (Image img in hearts)
         {
+            
             img.sprite = emptyHeart;
         }
         for (int i = 0; i < health; i++)

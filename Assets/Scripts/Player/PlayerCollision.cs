@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 public class PlayerCollision : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if(collision.transform.tag == "Enemy")
         {
+            Debug.Log("Olan");
             HealthManager.health--;
             if(HealthManager.health <=0){
                 PlayerManager.isGameOver = true;
@@ -15,7 +17,15 @@ public class PlayerCollision : MonoBehaviour
                 StartCoroutine(GetHurt());
             }
         }
+        if (collision.transform.tag == "DeadZone")
+        {
+            Debug.Log("Ýstenen");
+            PlayerManager.isGameOver = true;
+            AudioManager.instance.Play("GameOver");
+            gameObject.SetActive(false);
+        }
     }
+
     IEnumerator GetHurt(){ 
         Physics2D.IgnoreLayerCollision(6,8);
         GetComponent<Animator>().SetLayerWeight(1, 1);
