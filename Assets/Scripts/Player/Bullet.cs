@@ -8,8 +8,13 @@ public class Bullet : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
+            AudioManager.instance.Play("EnemyDamage");
             Destroy(collision.gameObject);
             Destroy(gameObject);
+        }
+        if(collision.tag == "Zombie")
+        {
+            collision.GetComponent<Zombie>().TakeDamege(25);
         }
     }
 }
