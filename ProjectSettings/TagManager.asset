@@ -8,7 +8,6 @@ TagManager:
   - Zombie
   - void
   - DeadZone
-  - CoRoutineStop
   layers:
   - Default
   - TransparentFX
@@ -20,7 +19,7 @@ TagManager:
   - ground
   - Enemy
   - DeadZone
-  - CoRoutineStop
+  - 
   - 
   - 
   - 
