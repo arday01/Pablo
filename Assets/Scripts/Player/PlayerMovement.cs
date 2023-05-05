@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
             Flip();
     }
 
+
     void Flip()
     {
         isFacingRight = !isFacingRight;
