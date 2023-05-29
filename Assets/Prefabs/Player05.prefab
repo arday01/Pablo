@@ -194,6 +194,7 @@ MonoBehaviour:
   animator: {fileID: 5915613900601431965}
   bullet: {fileID: 781003252383409669, guid: a9988df823705ba48b1473305b20f6a1, type: 3}
   bulletHole: {fileID: 4690870584991214656}
+  force: 200
 --- !u!1 &5915613900978995265
 GameObject:
   m_ObjectHideFlags: 0
