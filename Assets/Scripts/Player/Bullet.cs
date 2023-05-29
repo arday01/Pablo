@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.tag == "Enemy2")
         {
             AudioManager.instance.Play("EnemyDamage");
             Destroy(collision.gameObject);
