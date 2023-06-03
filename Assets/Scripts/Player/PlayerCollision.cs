@@ -8,6 +8,11 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.tag == "Finish")
+        {
+            PlayerManager.ResetPosition();
+            LevelManager.NextLevel();
+        }
         if (collision.transform.tag == "Enemy" || collision.transform.tag == "Enemy2" || collision.transform.tag == "Zombie")
         {
   
@@ -22,6 +27,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 StartCoroutine(GetHurt());
             }
+
         }
 
         if (collision.transform.tag == "DeadZone")
@@ -46,5 +52,6 @@ public class PlayerCollision : MonoBehaviour
         GetComponent<Animator>().SetLayerWeight(1, 0);
         Physics2D.IgnoreLayerCollision(6, 8, false);
     }
+   
 
 }

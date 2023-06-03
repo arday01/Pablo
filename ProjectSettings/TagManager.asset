@@ -9,6 +9,8 @@ TagManager:
   - void
   - DeadZone
   - CoRoutineStop
+  - Enemy2
+  - Grid
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -15,7 +16,17 @@ public class PlayerShoot : MonoBehaviour
         controls=new PlayerControls();
         controls.Enable();
 
-        controls.Land.Shoot.performed += ctx => Fire();
+        controls.Land.Shoot.performed += Shoot;
+    }
+    private void OnDisable()
+    {
+
+        controls.Land.Shoot.performed -= Shoot;
+
+    }
+    private void Shoot(CallbackContext callbackContext)
+    {
+        Fire();
     }
     private void Fire()
     {

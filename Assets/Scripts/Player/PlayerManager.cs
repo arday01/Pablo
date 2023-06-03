@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public static bool isGameOver;
     public GameObject gameOverScreen;
     public GameObject pauseMenuScreen;
-
+    
     public static Vector2 lastCheckPointPos = new Vector2(-3,0);
 
     public static int numberOfCoins;
@@ -17,7 +17,13 @@ public class PlayerManager : MonoBehaviour
     public GameObject[] playerPrefabs;
     int characterIndex;
     public CinemachineVirtualCamera VCam;
-   
+
+    public static void ResetPosition()
+    {
+        lastCheckPointPos = new Vector2(-3, 0);
+
+    }
+
     private void Awake()
     {
         characterIndex = PlayerPrefs.GetInt("SelectedCharacter", 0);

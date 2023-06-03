@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         controls.Land.Move.performed += Move;
         controls.Land.Jump.performed += Jump;
     }
+    
     private void OnDisable()
     {
 
