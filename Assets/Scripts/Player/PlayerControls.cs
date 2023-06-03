@@ -53,15 +53,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Slide"",
-                    ""type"": ""Button"",
-                    ""id"": ""48c0911a-42c8-4550-8f55-4f1351da7ad2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,17 +143,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d227e1c1-963e-4f1e-87ad-ddac182cd684"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Slide"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -174,7 +154,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Land_Move = m_Land.FindAction("Move", throwIfNotFound: true);
         m_Land_Jump = m_Land.FindAction("Jump", throwIfNotFound: true);
         m_Land_Shoot = m_Land.FindAction("Shoot", throwIfNotFound: true);
-        m_Land_Slide = m_Land.FindAction("Slide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -237,7 +216,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Land_Move;
     private readonly InputAction m_Land_Jump;
     private readonly InputAction m_Land_Shoot;
-    private readonly InputAction m_Land_Slide;
     public struct LandActions
     {
         private @PlayerControls m_Wrapper;
@@ -245,7 +223,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Land_Move;
         public InputAction @Jump => m_Wrapper.m_Land_Jump;
         public InputAction @Shoot => m_Wrapper.m_Land_Shoot;
-        public InputAction @Slide => m_Wrapper.m_Land_Slide;
         public InputActionMap Get() { return m_Wrapper.m_Land; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -264,9 +241,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Shoot.started -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnShoot;
-                @Slide.started -= m_Wrapper.m_LandActionsCallbackInterface.OnSlide;
-                @Slide.performed -= m_Wrapper.m_LandActionsCallbackInterface.OnSlide;
-                @Slide.canceled -= m_Wrapper.m_LandActionsCallbackInterface.OnSlide;
             }
             m_Wrapper.m_LandActionsCallbackInterface = instance;
             if (instance != null)
@@ -280,9 +254,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
-                @Slide.started += instance.OnSlide;
-                @Slide.performed += instance.OnSlide;
-                @Slide.canceled += instance.OnSlide;
             }
         }
     }
@@ -292,6 +263,5 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
-        void OnSlide(InputAction.CallbackContext context);
     }
 }

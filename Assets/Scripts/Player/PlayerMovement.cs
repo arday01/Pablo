@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -21,14 +22,28 @@ public class PlayerMovement : MonoBehaviour
     {
         controls = new PlayerControls();
         controls.Enable();
-
-        controls.Land.Move.performed += ctx =>
-        {
-            direction = ctx.ReadValue<float>();
-        };
-
-        controls.Land.Jump.performed += ctx => Jump();
+        controls.Land.Move.performed += Move;
+        controls.Land.Jump.performed += Jump;
     }
+    private void OnDisable()
+    {
+
+        controls.Land.Move.performed -= Move;
+        controls.Land.Jump.performed -= Jump;
+
+    }
+    private void Move(CallbackContext callbackContext)
+    {
+          direction = callbackContext.ReadValue<float>();
+
+    }
+
+    private void Jump(CallbackContext callbackContext)
+    {
+        Jump();
+    }
+
+    
 
     void FixedUpdate()
     {

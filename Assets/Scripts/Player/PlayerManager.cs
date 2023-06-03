@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ResumGame()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         pauseMenuScreen.SetActive(false);
     }
 

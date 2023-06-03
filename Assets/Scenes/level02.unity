@@ -6107,8 +6107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 184493672}
-  middleBG: {fileID: 0}
-  sideBG: {fileID: 0}
+  middleBG: {fileID: 236664054}
+  sideBG: {fileID: 1514723918}
   length: 48
 --- !u!4 &147256824
 Transform:
